@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@* Note: all # are a placeholder. lagay niyo yung ilalagay talaga diyan kung hindi sasabog, di joke lng di gagana pag ganun *@
+
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title> @ViewData["Title"] - Asset Management System</title>
+        <link href="~/css/Login.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="left-side">
+                <h1> ASSET MANAGEMENT SYSTEM </h1>
+            </div>
+
+            <div class="right-side">
+                <div class="login-box">
+
+            @* Start of the Login form *@
+            <form method="post" action="#">
+
+                @* div for Username *@
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required />
+                </div>
+                
+                @* div for password *@
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required />
+                </div>
+
+                @* Login button *@
+                <button type="submit" class="btn login-btn"> Log in </button>
+            </form>
+            @* div for Register *@
+                <div class="register-link">
+                    <p>Don't have an account yet?</p>
+                </div>
+                <button class="btn register-btn">Register now</button>
+          </div>
+       </div>
+    </div>
+</body>
+</html>
