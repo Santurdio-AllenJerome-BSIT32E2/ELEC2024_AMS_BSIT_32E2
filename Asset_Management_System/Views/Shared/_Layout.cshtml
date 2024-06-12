@@ -8,32 +8,65 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Asset_Management_System.styles.css" asp-append-version="true" />
 </head>
+<style>
+    .sidebar {
+        height: 100vh;
+        background-color: #f8f9fa;
+        padding-top: 20px;
+    }
+
+        .sidebar .nav-link {
+            color: #000;
+            margin: 10px 0;
+        }
+
+            .sidebar .nav-link.active {
+                background-color: #ffc107;
+                color: #fff;
+            }
+
+    .content {
+        padding: 20px;
+    }
+
+    .product-list {
+        height: 70vh;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+</style>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Asset_Management_System</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="text-center mb-4">
+                    <img src="user-icon.png" alt="User" class="img-fluid rounded-circle" style="width: 50px;" />
+                    <p>Welcome: @User.Identity.Name</p>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] as string == "Products" ? "active" : "") rounded text-center" asp-controller="Home" asp-action="Products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] as string == "Contacts" ? "active" : "") rounded text-center" asp-controller="Home" asp-action="Contacts">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] as string == "Tasks" ? "active" : "") rounded text-center" asp-controller="Home" asp-action="Tasks">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] as string == "Assets" ? "active" : "") rounded text-center" asp-controller="Home" asp-action="Assets">Assets</a>
+                    </li>
+                </ul>
+            </nav>
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 content">
+                <div class="container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+            </main>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

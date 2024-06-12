@@ -13,13 +13,60 @@ namespace Asset_Management_System.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Products()
+        {
+            ViewData["ActivePage"] = "Products";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            // Fetch the product by id and pass it to the view
+            return View(new ProductModel { Id = id, Name = "Product A", Description = "Description A", Price = 100, Quantity = 10 });
+        }
+
+        [HttpPost]
+        public IActionResult EditProduct(ProductModel model)
+        {
+            // Save the updated product
+            return RedirectToAction("Products");
+        }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            // Delete the product by id
+            return RedirectToAction("Products");
+        }
+
+        [HttpGet]
+        public IActionResult AddProduct()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult AddProduct(ProductModel model)
         {
+            // Save the new product
+            return RedirectToAction("Products");
+        }
+
+        public IActionResult Contacts()
+        {
+            ViewData["ActivePage"] = "Contacts";
+            return View();
+        }
+
+        public IActionResult Tasks()
+        {
+            ViewData["ActivePage"] = "Tasks";
+            return View();
+        }
+
+        public IActionResult Assets()
+        {
+            ViewData["ActivePage"] = "Assets";
             return View();
         }
 
