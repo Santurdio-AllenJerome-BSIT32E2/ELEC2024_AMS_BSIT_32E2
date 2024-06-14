@@ -28,7 +28,7 @@ namespace Asset_Management_System
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Products}/{id?}");
 
             app.Run();
         }
